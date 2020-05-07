@@ -1,0 +1,10 @@
+
+DROP TABLE IF EXISTS notes;
+CREATE TABLE notes (
+    id SERIAL NOT NULL,
+    param1 VARCHAR(20) NOT NULL,
+    param2 VARCHAR(20) NOT NULL,
+    param3 VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    note TEXT
+);
