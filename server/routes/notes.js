@@ -19,7 +19,7 @@ router.get("/:param1/:param2/:param3", async (req, res) => {
         let {
             rows,
         } = await db.query(
-            "INSERT INTO notes (param1, param2, param3, note, created_at) VALUES ($1, $2, $3, CURRENT_TIMESTAMP) RETURNING * ",
+            "INSERT INTO notes (param1, param2, param3, note, created_at) VALUES ($1, $2, $3, 'Edit this text',CURRENT_TIMESTAMP) RETURNING * ",
             [param1, param2, param3]
         );
         return res.send(rows[0]);
