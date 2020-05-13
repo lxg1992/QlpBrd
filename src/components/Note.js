@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import axios from "axios";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { addLink } from "../redux/actions";
 
 const Note = () => {
+    //const links = useSelector((state) => state.links);
+    const dispatch = useDispatch();
+    const store = useStore();
+    //const alert = useSelector((alert) => state.alert);
     const { param1, param2, param3 } = useParams();
     const [note, setNote] = useState("");
     const [typingTimeout, setTypingTimeout] = useState(0);
@@ -21,6 +27,11 @@ const Note = () => {
         }
     }, [note]);
 
+    useEffect(() => {
+        dispatch(addLink(`${param1}/${param2}/${param3}`));
+
+        console.log(store.getState());
+    }, []);
     const getNote = () => {
         axios
             .get(

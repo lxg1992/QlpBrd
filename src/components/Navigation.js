@@ -10,6 +10,12 @@ const Navigation = () => (
             <li>
                 <Link to="/about">About</Link>
             </li>
+            {/*links.length &&
+                links.map((link) => (
+                    <li>
+                        <Link to={link}>{link}</Link>
+                    </li>
+                ))*/}
         </ul>
     </nav>
 );
