@@ -98,8 +98,13 @@ const Note = () => {
                 name="text"
                 placeholder="This field is currently empty"
             ></textarea>
-            <Moment fromNow>{timeUpdated}</Moment>
-            <h3>Last updated: {timeUpdated ? timeUpdated : "unknown"}</h3>
+            <Moment fromNow interval={5000}>
+                {timeUpdated}
+            </Moment>
+            <h3>
+                Last updated:{" "}
+                {timeUpdated ? <Moment>{timeUpdated}</Moment> : "unknown"}
+            </h3>
         </div>
     );
 };
