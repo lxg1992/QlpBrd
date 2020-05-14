@@ -1,0 +1,7 @@
+node_modules
+webpack.config.js
+.next
+dist
+server
+db
+.eslintrc.js
