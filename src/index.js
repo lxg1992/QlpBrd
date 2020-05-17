@@ -1,15 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { ConnectedRouter } from "connected-react-router";
+import configureStore, { history } from "./redux";
+
 import "./styles.scss";
 import App from "./App.js";
-import store from "./redux";
-import { Provider } from "react-redux";
+
+const store = configureStore();
+
 console.log(store.getState());
 
 const Index = () => {
   return (
     <Provider store={store}>
-      <App />
+      <ConnectedRouter history={history}>
+        <App />
+      </ConnectedRouter>
     </Provider>
   );
 };

@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
+import { connectRouter } from "connected-react-router";
 import linksReducer from "./linksReducer";
 import alertReducer from "./alertReducer";
 
-const rootReducer = combineReducers({
-  links: linksReducer,
-  alert: alertReducer,
-});
+const createRootReducer = (history) =>
+  combineReducers({
+    router: connectRouter(history),
+    links: linksReducer,
+    alert: alertReducer,
+  });
 
-export default rootReducer;
+export default createRootReducer;

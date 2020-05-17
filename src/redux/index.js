@@ -1,6 +1,17 @@
-import { createStore } from "redux";
-import rootReducer from "./reducers";
+import { createBrowserHistory } from "history";
+import { applyMiddleware, compose, createStore } from "redux";
+import { routerMiddleware } from "connected-react-router";
 
-const store = createStore(rootReducer);
+import createRootReducer from "./reducers";
 
-export default store;
+export const history = createBrowserHistory();
+
+export default function configureStore(preloadedState) {
+  const store = createStore(
+    createRootReducer(history),
+    preloadedState,
+    compose(applyMiddleware(routerMiddleware(history)))
+  );
+
+  return store;
+}
