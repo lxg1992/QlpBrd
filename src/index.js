@@ -26,6 +26,7 @@ const Index = () => {
 ReactDOM.render(<Index />, document.getElementById("root"));
 
 //done: Setup Redux-Persist
+//TODO: Setup Alert Show
 //TODO: Setup PDF download of Note
 //TODO: Setup Copy+Paste of Note
 //TODO: Setup admin auth of getting all notes

@@ -1,3 +1,0 @@
-Redux
-    Add a links store with SET_LINKS, ADD_LINK, REMOVE_LINK based on localStorage
-    Add an alert store which will display a CONSTANT_ALERT, FADING_ALERT and OFF_ALERT

@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+
 import CustomLink from "./CustomLink";
+import { clearLinks } from "../redux/actions";
 
 import "../styles.scss";
 
 const Navigation = (props) => {
   const { links } = props;
+  const dispatch = useDispatch();
   console.log("NAVIGATION PROPS", props);
   return (
     <nav>
@@ -17,8 +21,23 @@ const Navigation = (props) => {
         <li>
           <Link to="/about">About</Link>
         </li>
+      </ul>
+      <ul>
         {links &&
           links.map((link, idx) => <CustomLink link={link} key={idx} />)}
+      </ul>
+      <ul>
+        {links.length > 0 && (
+          <li>
+            <span
+              onClick={() => {
+                dispatch(clearLinks());
+              }}
+            >
+              Remove all
+            </span>
+          </li>
+        )}
       </ul>
     </nav>
   );
