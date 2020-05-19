@@ -25,9 +25,12 @@ const Note = () => {
   }, []);
 
   useEffect(() => {
+    ////let mounted = true;
     if (!isInitial) {
       delayAction(postNote, 1000, typingTimeout, setTypingTimeout);
     }
+
+    return () => {};
   }, [note]);
 
   ////useEffect(() => {}, []);
