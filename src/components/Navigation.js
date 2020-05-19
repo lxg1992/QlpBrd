@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import CustomLink from "./CustomLink";
+
+import "../styles.scss";
 
 const Navigation = (props) => {
   const { links } = props;
@@ -15,11 +18,7 @@ const Navigation = (props) => {
           <Link to="/about">About</Link>
         </li>
         {links &&
-          links.map((link, idx) => (
-            <li key={idx}>
-              <Link to={link}>{link}</Link>
-            </li>
-          ))}
+          links.map((link, idx) => <CustomLink link={link} key={idx} />)}
       </ul>
     </nav>
   );
