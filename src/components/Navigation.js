@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
 import CustomLink from "./CustomLink";
-import { clearLinks } from "../redux/actions";
+import { clearLinks } from "../redux/actions/linksActions";
 
 import "../styles.scss";
 

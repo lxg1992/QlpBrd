@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
-import { removeLink } from "../redux/actions";
+import { removeLink } from "../redux/actions/alertActions";
 import "../styles.scss";
 
 const CustomLink = (props) => {

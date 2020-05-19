@@ -5,7 +5,7 @@ import axios from "axios";
 import { useDispatch, useStore } from "react-redux";
 
 import delayAction from "../helpers/delay";
-import { addLink } from "../redux/actions";
+import { addLink } from "../redux/actions/linksActions";
 
 const Note = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ const Note = () => {
   }, []);
 
   useEffect(() => {
-    ////let mounted = true;
     if (!isInitial) {
       delayAction(postNote, 1000, typingTimeout, setTypingTimeout);
     }
@@ -33,7 +32,6 @@ const Note = () => {
     return () => {};
   }, [note]);
 
-  ////useEffect(() => {}, []);
   const getNote = () => {
     axios
       .get(`http://localhost:3000/api/notes/${param1}/${param2}/${param3}`)
