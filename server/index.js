@@ -10,13 +10,13 @@ const compiler = webpack(webpackConfig);
 const app = express();
 
 app.use(
-    morgan(":method :url :status :response-time ms - :res[content-length]")
+  morgan(":method :url :status :response-time ms - :res[content-length]")
 );
 app.use(
-    require("webpack-dev-middleware")(compiler, {
-        noInfo: true,
-        publicPath: webpackConfig.output.publicPath,
-    })
+  require("webpack-dev-middleware")(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+  })
 );
 app.use(require("webpack-hot-middleware")(compiler));
 
@@ -31,16 +31,16 @@ app.use(bodyParser.json());
 mountRoutes(app);
 
 const mockResponse = {
-    foo: "bar",
-    bar: "foo",
+  foo: "bar",
+  bar: "foo",
 };
 app.get("/test", (req, res) => {
-    res.send(mockResponse);
+  res.send(mockResponse);
 });
 app.get("*", (req, res) => {
-    res.sendFile(HTML_FILE);
+  res.sendFile(HTML_FILE);
 });
 
 app.listen(PORT, function () {
-    console.log("App listening on PORT: " + PORT);
+  console.log("App listening on PORT: " + PORT);
 });
