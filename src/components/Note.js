@@ -11,7 +11,7 @@ const Note = () => {
   const dispatch = useDispatch();
   const store = useStore();
   const { param1, param2, param3 } = useParams();
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(" ");
   const [typingTimeout, setTypingTimeout] = useState(0);
   const [isError, setError] = useState(false);
   const [timeUpdated, setTimeUpdated] = useState(0);
@@ -28,8 +28,6 @@ const Note = () => {
     if (!isInitial) {
       delayAction(postNote, 1000, typingTimeout, setTypingTimeout);
     }
-
-    return () => {};
   }, [note]);
 
   const getNote = () => {

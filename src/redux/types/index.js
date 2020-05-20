@@ -9,6 +9,6 @@ export const SUCCESS_ALERT = "SUCCESS_ALERT";
 export const ERROR_ALERT = "ERROR_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";
 
-//*Alert Categories
+//* Alert Categories
 export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";

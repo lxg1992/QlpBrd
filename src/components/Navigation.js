@@ -23,8 +23,7 @@ const Navigation = (props) => {
         </li>
       </ul>
       <ul>
-        {links &&
-          links.map((link, idx) => <CustomLink link={link} key={idx} />)}
+        {links && links.map((link) => <CustomLink link={link} key={link} />)}
       </ul>
       <ul>
         {links.length > 0 && (
