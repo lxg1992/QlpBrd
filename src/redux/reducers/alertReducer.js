@@ -11,7 +11,7 @@ const initialState = {
   visible: false,
   category: null,
 };
-export default function alertReducer(state = initialState, action = null) {
+export default function alertReducer(state = initialState, action) {
   switch (action.type) {
     case SUCCESS_ALERT:
       return {
