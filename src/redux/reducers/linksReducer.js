@@ -1,4 +1,9 @@
-import { ADD_LINK, REMOVE_LINK, SET_LINKS, CLEAR_LINKS } from "../types";
+import {
+  ADD_LINK,
+  REMOVE_LINK,
+  //SET_LINKS,
+  CLEAR_LINKS,
+} from "../types";
 
 export default function linksReducer(state = [], { type, payload = null }) {
   switch (type) {
@@ -9,8 +14,8 @@ export default function linksReducer(state = [], { type, payload = null }) {
       return [...state, payload];
     case REMOVE_LINK:
       return [...state.filter((link) => link !== payload)];
-    case SET_LINKS:
-      return payload;
+    /*case SET_LINKS:
+      return payload;*/
     case CLEAR_LINKS:
       return [];
     default:

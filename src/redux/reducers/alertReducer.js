@@ -2,8 +2,10 @@ import {
   SUCCESS_ALERT,
   ERROR_ALERT,
   REMOVE_ALERT,
+  INFO_ALERT,
   SUCCESS,
   ERROR,
+  INFO,
 } from "../types";
 
 const initialState = {
@@ -24,6 +26,12 @@ export default function alertReducer(state = initialState, action) {
         text: action.payload,
         visible: true,
         category: ERROR,
+      };
+    case INFO_ALERT:
+      return {
+        text: action.payload,
+        visbile: true,
+        category: INFO,
       };
     case REMOVE_ALERT:
       return {

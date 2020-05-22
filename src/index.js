@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { PersistGate } from "redux-persist/lib/integration/react";
+import CssBaseLine from "@material-ui/core/CssBaseline";
+
 import configureStore, { history } from "./redux";
 
 import "./styles.scss";
@@ -17,7 +19,10 @@ const Index = () => {
     <Provider store={store}>
       <PersistGate loading={<div>Loading</div>} persistor={persistor}>
         <ConnectedRouter history={history}>
-          <App />
+          <React.Fragment>
+            <CssBaseLine />
+            <App />
+          </React.Fragment>
         </ConnectedRouter>
       </PersistGate>
     </Provider>

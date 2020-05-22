@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
+import { TextareaAutosize } from "@material-ui/core";
 import axios from "axios";
 import { useDispatch, useStore } from "react-redux";
 
@@ -88,12 +89,13 @@ const Note = () => {
       <hr />
       <h3>{param3}</h3>
       <hr />
-      <textarea
+      <TextareaAutosize
+        rowsMin={5}
         value={note}
         onChange={handleChange}
         name="text"
         placeholder="This field is currently empty"
-      ></textarea>
+      />
       <Moment fromNow interval={5000}>
         {timeUpdated}
       </Moment>
