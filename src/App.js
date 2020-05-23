@@ -5,12 +5,13 @@ import Navigation from "./components/Navigation";
 import Landing from "./components/Landing";
 import About from "./components/About";
 import Note from "./components/Note";
+import AlertContainer from "./components/AlertContainer";
 
 const App = () => {
   return (
     <Router basename="/">
       <Navigation />
-
+      <AlertContainer />
       <Switch>
         <Route exact path="/">
           <Landing />

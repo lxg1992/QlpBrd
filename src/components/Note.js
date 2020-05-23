@@ -3,10 +3,11 @@ import { useParams, useLocation } from "react-router-dom";
 import Moment from "react-moment";
 import { TextareaAutosize } from "@material-ui/core";
 import axios from "axios";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
+import { info_alert, remove_alert } from "../redux/actions/alertActions";
 
 const Note = (props) => {
   const dispatch = useDispatch();
@@ -23,11 +24,15 @@ const Note = (props) => {
   useEffect(() => {
     getNote();
     dispatch(addLink(`${param1}/${param2}/${param3}`));
+    dispatch(info_alert(`${param1}/${param2}/${param3} retrieved`));
+    setTimeout(() => dispatch(remove_alert()), 5000);
   }, []);
 
   useEffect(() => {
     setInitial(true);
     getNote();
+    dispatch(info_alert(`${param1}/${param2}/${param3} retrieved`));
+    setTimeout(() => dispatch(remove_alert()), 5000);
   }, [location]);
 
   useEffect(() => {

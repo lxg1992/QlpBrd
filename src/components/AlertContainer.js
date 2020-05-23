@@ -4,7 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import "../styles.scss";
 
 const AlertContainer = () => {
-  return <div>LOL</div>;
+  const { visible, text, category } = useSelector((state) => state.alert);
+
+  return visible ? <div className={category}>{text}</div> : "";
 };
 
 export default AlertContainer;

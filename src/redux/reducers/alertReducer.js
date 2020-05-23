@@ -30,7 +30,7 @@ export default function alertReducer(state = initialState, action) {
     case INFO_ALERT:
       return {
         text: action.payload,
-        visbile: true,
+        visible: true,
         category: INFO,
       };
     case REMOVE_ALERT:

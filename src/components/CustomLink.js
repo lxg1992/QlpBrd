@@ -1,15 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useStore } from "react-redux";
 
 import { removeLink } from "../redux/actions/linksActions";
+import { info_alert, remove_alert } from "../redux/actions/alertActions";
 import "../styles.scss";
 
 const CustomLink = (props) => {
   const { link } = props;
   const history = useHistory();
   const dispatch = useDispatch();
+  const store = useStore();
 
   return (
     <li>
@@ -24,6 +26,9 @@ const CustomLink = (props) => {
       <span
         onClick={() => {
           dispatch(removeLink(link));
+          dispatch(info_alert(`${link} removed`));
+          setTimeout(() => dispatch(remove_alert()), 5000);
+          console.log(store.getState());
         }}
       >
         CLOSE
