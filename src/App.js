@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import Navigation from "./components/Navigation";
 import Landing from "./components/Landing";
@@ -8,11 +7,10 @@ import About from "./components/About";
 import Note from "./components/Note";
 
 const App = () => {
-  const links = useSelector((state) => state.links);
-
   return (
-    <Router>
-      <Navigation links={links} />
+    <Router basename="/">
+      <Navigation />
+
       <Switch>
         <Route exact path="/">
           <Landing />

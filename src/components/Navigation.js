@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CustomLink from "./CustomLink";
 import { clearLinks } from "../redux/actions/linksActions";
 
 import "../styles.scss";
 
-const Navigation = (props) => {
-  const { links } = props;
+const Navigation = () => {
+  const links = useSelector((state) => state.links);
   const dispatch = useDispatch();
-  console.log("NAVIGATION PROPS", props);
   return (
     <nav>
       <ul>

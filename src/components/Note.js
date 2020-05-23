@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Moment from "react-moment";
 import { TextareaAutosize } from "@material-ui/core";
 import axios from "axios";
@@ -8,9 +8,9 @@ import { useDispatch, useStore } from "react-redux";
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
 
-const Note = () => {
+const Note = (props) => {
   const dispatch = useDispatch();
-  const store = useStore();
+  const location = useLocation();
   const { param1, param2, param3 } = useParams();
   const [note, setNote] = useState(" ");
   const [typingTimeout, setTypingTimeout] = useState(0);
@@ -18,12 +18,17 @@ const Note = () => {
   const [timeUpdated, setTimeUpdated] = useState(0);
   const [isInitial, setInitial] = useState(true);
 
+  console.log("NOTE: ", props);
+
   useEffect(() => {
     getNote();
     dispatch(addLink(`${param1}/${param2}/${param3}`));
-
-    console.log(store.getState());
   }, []);
+
+  useEffect(() => {
+    setInitial(true);
+    getNote();
+  }, [location]);
 
   useEffect(() => {
     if (!isInitial) {
