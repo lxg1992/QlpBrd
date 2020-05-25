@@ -6,6 +6,7 @@ import {
   SUCCESS,
   ERROR,
   INFO,
+  HIDDEN,
 } from "../types";
 
 const initialState = {
@@ -37,7 +38,7 @@ export default function alertReducer(state = initialState, action) {
       return {
         text: "",
         visible: false,
-        category: null,
+        category: HIDDEN,
       };
     default:
       return state;

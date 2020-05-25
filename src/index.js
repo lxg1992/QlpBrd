@@ -4,6 +4,9 @@ import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import CssBaseLine from "@material-ui/core/CssBaseline";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { purple } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 
 import configureStore, { history } from "./redux";
 
@@ -12,17 +15,26 @@ import App from "./App.js";
 
 const { store, persistor } = configureStore();
 
-console.log(store.getState());
-
 const Index = () => {
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: green[500],
+      },
+    },
+  });
+
   return (
     <Provider store={store}>
       <PersistGate loading={<div>Loading</div>} persistor={persistor}>
         <ConnectedRouter history={history}>
-          <React.Fragment>
+          <ThemeProvider theme={theme}>
             <CssBaseLine />
             <App />
-          </React.Fragment>
+          </ThemeProvider>
         </ConnectedRouter>
       </PersistGate>
     </Provider>

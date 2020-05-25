@@ -7,7 +7,12 @@ import { useDispatch } from "react-redux";
 
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
-import { info_alert, remove_alert } from "../redux/actions/alertActions";
+import {
+  info_alert,
+  remove_alert,
+  success_alert,
+  error_alert,
+} from "../redux/actions/alertActions";
 
 const Note = (props) => {
   const dispatch = useDispatch();
@@ -59,16 +64,6 @@ const Note = (props) => {
     setNote(e.target.value);
   };
 
-  // // const delayAction = (fn, ms) => {
-  // //     clearTimeout(typingTimeout);
-
-  // //     setTypingTimeout(
-  // //         setTimeout(() => {
-  // //             fn();
-  // //         }, ms)
-  // //     );
-  // // };
-
   const postNote = () => {
     axios
       .put(
@@ -83,6 +78,9 @@ const Note = (props) => {
       .then((res) => {
         setNote(res.data.note);
         setTimeUpdated(res.data.created_at);
+        dispatch(success_alert(`${param1}/${param2}/${param3} updated`));
+        setTimeout(() => dispatch(remove_alert()), 5000);
+
         console.log("postNote(): ", res.data);
       })
       .catch((err) => {
