@@ -16,7 +16,7 @@ const App = () => {
         {/*<Grid container item xs={12}>*/}
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="title">Qlpbrd</Typography>
+            <Typography variant="h2">Qlpbrd</Typography>
           </Toolbar>
         </AppBar>
         {/* </Grid> */}

@@ -12,7 +12,7 @@ import {
 const initialState = {
   text: "",
   visible: false,
-  category: null,
+  category: HIDDEN,
 };
 export default function alertReducer(state = initialState, action) {
   switch (action.type) {
