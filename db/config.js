@@ -3,8 +3,10 @@ require("dotenv").config();
 let dbParams;
 
 if (process.env.DATABASE_URL) {
-  dbParams.connectionString = process.env.DATABASE_URL;
-  dbParams.ssl = { rejectUnauthorized: false };
+  dbParams = {
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false },
+  };
 } else {
   dbParams = {
     host: process.env.PGHOST,
