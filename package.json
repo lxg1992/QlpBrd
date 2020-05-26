@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint && echo 'Dry Run Complete'",
     "eslint": "eslint --fix . && echo 'Wet Run Complete'",
-    "heroku-postbuild": "npm install && webpack --mode production"
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "",
