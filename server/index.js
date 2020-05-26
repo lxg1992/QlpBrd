@@ -12,13 +12,16 @@ const app = express();
 app.use(
   morgan(":method :url :status :response-time ms - :res[content-length]")
 );
-app.use(
-  require("webpack-dev-middleware")(compiler, {
-    noInfo: true,
-    publicPath: webpackConfig.output.publicPath,
-  })
-);
-app.use(require("webpack-hot-middleware")(compiler));
+
+if (process.env.NODE_ENV === "development") {
+  app.use(
+    require("webpack-dev-middleware")(compiler, {
+      noInfo: true,
+      publicPath: webpackConfig.output.publicPath,
+    })
+  );
+  app.use(require("webpack-hot-middleware")(compiler));
+}
 
 const PORT = process.env.PORT || 3000;
 
