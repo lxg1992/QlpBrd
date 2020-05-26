@@ -14,7 +14,7 @@ import {
   error_alert,
 } from "../redux/actions/alertActions";
 
-const Note = (props) => {
+const Note = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { param1, param2, param3 } = useParams();
@@ -24,20 +24,14 @@ const Note = (props) => {
   const [timeUpdated, setTimeUpdated] = useState(0);
   const [isInitial, setInitial] = useState(true);
 
-  console.log("NOTE: ", props);
-
   useEffect(() => {
     getNote();
     dispatch(addLink(`${param1}/${param2}/${param3}`));
-    dispatch(info_alert(`${param1}/${param2}/${param3} retrieved`));
-    setTimeout(() => dispatch(remove_alert()), 5000);
   }, []);
 
   useEffect(() => {
     setInitial(true);
     getNote();
-    dispatch(info_alert(`${param1}/${param2}/${param3} retrieved`));
-    setTimeout(() => dispatch(remove_alert()), 5000);
   }, [location]);
 
   useEffect(() => {
@@ -53,6 +47,8 @@ const Note = (props) => {
         console.log("getNote(): ", res.data);
         setNote(res.data.note);
         setTimeUpdated(res.data.created_at);
+        dispatch(info_alert(`${param1}/${param2}/${param3} retrieved`));
+        setTimeout(() => dispatch(remove_alert()), 5000);
       })
       .catch((err) => {
         setError(err);
@@ -81,7 +77,7 @@ const Note = (props) => {
         dispatch(success_alert(`${param1}/${param2}/${param3} updated`));
         setTimeout(() => dispatch(remove_alert()), 5000);
 
-        console.log("postNote(): ", res.data);
+        console.log(`postNote(${param1},${param2},${param3})`, res.data);
       })
       .catch((err) => {
         setError(err);
