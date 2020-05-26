@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import { TextareaAutosize } from "@material-ui/core";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+const PORT = process.env.PORT || 3000;
 
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
@@ -42,7 +43,7 @@ const Note = () => {
 
   const getNote = () => {
     axios
-      .get(`http://localhost:3000/api/notes/${param1}/${param2}/${param3}`)
+      .get(`http://localhost:${PORT}/api/notes/${param1}/${param2}/${param3}`)
       .then((res) => {
         console.log("getNote(): ", res.data);
         setNote(res.data.note);
@@ -63,7 +64,7 @@ const Note = () => {
   const postNote = () => {
     axios
       .put(
-        `http://localhost:3000/api/notes/${param1}/${param2}/${param3}`,
+        `http://localhost:${PORT}/api/notes/${param1}/${param2}/${param3}`,
         { note },
         {
           headers: {
