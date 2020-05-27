@@ -4,7 +4,8 @@ import Moment from "react-moment";
 import { TextareaAutosize } from "@material-ui/core";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-const PORT = process.env.PORT || 3000;
+import dotenv from "dotenv";
+dotenv.config();
 
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
@@ -15,6 +16,7 @@ import {
   error_alert,
 } from "../redux/actions/alertActions";
 
+const PORT = process.env.PORT || 3000;
 const Note = () => {
   const dispatch = useDispatch();
   const location = useLocation();
