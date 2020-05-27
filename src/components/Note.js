@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 let prefix;
 
 if (process.env.PLATFORM === "heroku") {
-  prefix = `https://qlpbrd.herokuapp.com:${PORT}`;
+  prefix = `https://qlpbrd.herokuapp.com`;
 } else {
   prefix = `http://localhost:${PORT}`;
 }
