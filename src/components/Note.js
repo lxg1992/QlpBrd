@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 let prefix;
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.PLATFORM === "heroku") {
   prefix = `https://qlpbrd.herokuapp.com:${PORT}`;
 } else {
   prefix = `http://localhost:${PORT}`;
