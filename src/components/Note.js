@@ -9,6 +9,14 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
+let prefix;
+
+if (process.env.NODE_ENV === "production") {
+  prefix = `https://qlpbrd.herokuapp.com:${PORT}`;
+} else {
+  prefix = `http://localhost:${PORT}`;
+}
+
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
 import {
@@ -45,7 +53,7 @@ const Note = () => {
 
   const getNote = () => {
     axios
-      .get(`http://localhost:${PORT}/api/notes/${param1}/${param2}/${param3}`)
+      .get(`${prefix}/api/notes/${param1}/${param2}/${param3}`)
       .then((res) => {
         console.log("getNote(): ", res.data);
         setNote(res.data.note);
@@ -66,7 +74,7 @@ const Note = () => {
   const postNote = () => {
     axios
       .put(
-        `http://localhost:${PORT}/api/notes/${param1}/${param2}/${param3}`,
+        `${prefix}/api/notes/${param1}/${param2}/${param3}`,
         { note },
         {
           headers: {
