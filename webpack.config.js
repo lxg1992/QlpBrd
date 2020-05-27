@@ -47,4 +47,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
   },
   devtool: "cheap-module-eval-source-map",
+  node: {
+    fs: "empty",
+  },
 };

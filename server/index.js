@@ -3,8 +3,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const webpack = require("webpack");
 const morgan = require("morgan");
-const mountRoutes = require("./routes");
 const webpackConfig = require("../webpack.config");
+const mountRoutes = require("./routes");
 const compiler = webpack(webpackConfig);
 
 const app = express();
@@ -34,13 +34,6 @@ app.use(bodyParser.json());
 
 mountRoutes(app);
 
-const mockResponse = {
-  foo: "bar",
-  bar: "foo",
-};
-app.get("/test", (req, res) => {
-  res.send(mockResponse);
-});
 app.get("*", (req, res) => {
   res.sendFile(HTML_FILE);
 });
@@ -48,3 +41,5 @@ app.get("*", (req, res) => {
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
 });
+
+module.exports = PORT;

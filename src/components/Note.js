@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Moment from "react-moment";
-import { TextareaAutosize } from "@material-ui/core";
+import { TextareaAutosize, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import dotenv from "dotenv";
 dotenv.config();
+
+const PORT = process.env.PORT || 3000;
 
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
@@ -16,14 +18,12 @@ import {
   error_alert,
 } from "../redux/actions/alertActions";
 
-const PORT = process.env.PORT || 3000;
 const Note = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { param1, param2, param3 } = useParams();
   const [note, setNote] = useState(" ");
   const [typingTimeout, setTypingTimeout] = useState(0);
-  const [isError, setError] = useState(false);
   const [timeUpdated, setTimeUpdated] = useState(0);
   const [isInitial, setInitial] = useState(true);
 
@@ -54,7 +54,7 @@ const Note = () => {
         setTimeout(() => dispatch(remove_alert()), 5000);
       })
       .catch((err) => {
-        setError(err);
+        dispatch(error_alert(`Error while getting note:${err}`));
       });
   };
 
@@ -83,18 +83,17 @@ const Note = () => {
         console.log(`postNote(${param1},${param2},${param3})`, res.data);
       })
       .catch((err) => {
-        setError(err);
+        dispatch(error_alert(`Error while getting note:${err}`));
       });
   };
 
   return (
     <div>
-      {isError && <h3>{isError}</h3>}
-      <h3>{param1}</h3>
+      <Typography variant="h3">{param1}</Typography>
       <hr />
-      <h3>{param2}</h3>
+      <Typography variant="h3">{param2}</Typography>
       <hr />
-      <h3>{param3}</h3>
+      <Typography variant="h3">{param3}</Typography>
       <hr />
       <TextareaAutosize
         rowsMin={5}
@@ -106,9 +105,9 @@ const Note = () => {
       <Moment fromNow interval={5000}>
         {timeUpdated}
       </Moment>
-      <h3>
+      <Typography variant="h3">
         Last updated: {timeUpdated ? <Moment>{timeUpdated}</Moment> : "unknown"}
-      </h3>
+      </Typography>
     </div>
   );
 };
