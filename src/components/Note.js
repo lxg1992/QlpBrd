@@ -19,11 +19,11 @@ import {
 
 let prefix;
 
-//if (process.env.PLATFORM === "heroku") {
-prefix = `https://qlpbrd.herokuapp.com`;
-//} else {
-//prefix = `http://localhost:${PORT}`;
-//}
+if (process.env.NODE_ENV === "development") {
+  prefix = `http://localhost:${PORT}`;
+} else {
+  prefix = `https://qlpbrd.herokuapp.com`;
+}
 
 const Note = () => {
   const dispatch = useDispatch();
