@@ -8,14 +8,6 @@ import "../config";
 
 const PORT = process.env.PORT || 3000;
 
-let prefix;
-
-if (process.env.PLATFORM === "heroku") {
-  prefix = `https://qlpbrd.herokuapp.com`;
-} else {
-  prefix = `http://localhost:${PORT}`;
-}
-
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
 import {
@@ -24,6 +16,14 @@ import {
   success_alert,
   error_alert,
 } from "../redux/actions/alertActions";
+
+let prefix;
+
+//if (process.env.PLATFORM === "heroku") {
+prefix = `https://qlpbrd.herokuapp.com`;
+//} else {
+//prefix = `http://localhost:${PORT}`;
+//}
 
 const Note = () => {
   const dispatch = useDispatch();
