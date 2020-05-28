@@ -3,11 +3,14 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const webpack = require("webpack");
 const morgan = require("morgan");
+const cors = require("cors");
 const webpackConfig = require("../webpack.config");
 const mountRoutes = require("./routes");
 const compiler = webpack(webpackConfig);
 
 const app = express();
+
+app.use(cors())
 
 app.use(
   morgan(":method :url :status :response-time ms - :res[content-length]")
