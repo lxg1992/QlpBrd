@@ -4,8 +4,7 @@ import Moment from "react-moment";
 import { TextareaAutosize, Typography } from "@material-ui/core";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import dotenv from "dotenv";
-dotenv.config();
+import "../config";
 
 const PORT = process.env.PORT || 3000;
 
