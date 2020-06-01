@@ -6,8 +6,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import "../config";
 
-const PORT = process.env.PORT || 3000;
-
 import delayAction from "../helpers/delay";
 import { addLink } from "../redux/actions/linksActions";
 import {
@@ -20,7 +18,7 @@ import {
 let prefix;
 
 if (process.env.NODE_ENV === "development") {
-  prefix = `http://localhost:${PORT}`;
+  prefix = `http://localhost:3000`;
 } else {
   prefix = `https://qlpbrd.herokuapp.com`;
 }

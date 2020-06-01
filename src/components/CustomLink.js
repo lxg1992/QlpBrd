@@ -1,39 +1,55 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch, useStore } from "react-redux";
+import { Button, Box, Typography, ButtonGroup } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { removeLink } from "../redux/actions/linksActions";
 import { info_alert, remove_alert } from "../redux/actions/alertActions";
-import "../styles.scss";
 
-const CustomLink = (props) => {
-  const { link } = props;
+const useStyles = makeStyles({
+  root: {
+    margin: "5px 10px 5px",
+  },
+});
+
+const CustomLink = ({ link, number }) => {
+  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const store = useStore();
 
   return (
-    <li>
-      <span
-        onClick={() => {
-          history.push("/");
-          history.push(link);
-        }}
+    <Box className={classes.root}>
+      <ButtonGroup
+        size="small"
+        orientation="horizontal"
+        color="primary"
+        fullWidth
       >
-        {link}
-      </span>
-      <span
-        onClick={() => {
-          dispatch(removeLink(link));
-          dispatch(info_alert(`${link} removed`));
-          setTimeout(() => dispatch(remove_alert()), 5000);
-          console.log(store.getState());
-        }}
-      >
-        CLOSE
-      </span>
-    </li>
+        <Button
+          onClick={() => {
+            dispatch(removeLink(link));
+            dispatch(info_alert(`${link} removed`));
+            setTimeout(() => dispatch(remove_alert()), 5000);
+            console.log(store.getState());
+          }}
+        >
+          CLOSE
+        </Button>
+        <Button
+          onClick={() => {
+            history.push("/");
+            history.push(link);
+          }}
+        >
+          <Typography>
+            {number}. {link}
+          </Typography>
+        </Button>
+      </ButtonGroup>
+    </Box>
   );
 };
 

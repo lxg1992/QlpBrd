@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const webpackConfig = require("../webpack.config");
 const mountRoutes = require("./routes");
 const compiler = webpack(webpackConfig);
+require("dotenv").config();
 
 const app = express();
 
@@ -39,7 +40,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, function () {
-  console.log("App listening on PORT: BASE " + PORT);
+  console.log("App listening on PORT: " + PORT);
 });
 
 module.exports = PORT;

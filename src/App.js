@@ -1,27 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Typography } from "@material-ui/core";
 
 import Navigation from "./components/Navigation";
 import Landing from "./components/Landing";
 import About from "./components/About";
 import Note from "./components/Note";
 import AlertContainer from "./components/AlertContainer";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <Router basename="/">
       <Grid container>
         {/*<Grid container item xs={12}>*/}
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h2">Qlpbrd</Typography>
-          </Toolbar>
-        </AppBar>
+        <Header />
         {/* </Grid> */}
 
-        <Grid container item xs={12} sm={3}>
+        <Grid item xs={12} sm={3}>
           <Navigation />
         </Grid>
         <Grid container item xs={12} sm={9}>

@@ -11,7 +11,7 @@
     "start": "node server/index.js",
     "dev": "webpack --mode development && node server/index.js",
     "web": "webpack-dev-server --mode development",
-    "server": "nodemon server/index.js",
+    "server": "webpack --mode development && nodemon server/index.js",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint && echo 'Dry Run Complete'",

@@ -5,8 +5,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { PersistGate } from "redux-persist/lib/integration/react";
 import CssBaseLine from "@material-ui/core/CssBaseline";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { purple } from "@material-ui/core/colors";
-import { green } from "@material-ui/core/colors";
+import { grey, purple } from "@material-ui/core/colors";
 
 import configureStore, { history } from "./redux";
 
@@ -18,12 +17,8 @@ const { store, persistor } = configureStore();
 const Index = () => {
   const theme = createMuiTheme({
     palette: {
-      primary: {
-        main: purple[500],
-      },
-      secondary: {
-        main: green[500],
-      },
+      primary: purple,
+      secondary: grey,
     },
   });
 
