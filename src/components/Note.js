@@ -20,6 +20,7 @@ import {
 const useStyles = makeStyles({
   textArea: {
     width: "100%",
+    maxWidth: "100%",
   },
   noteContainer: {
     margin: "10px auto",
@@ -127,11 +128,16 @@ const Note = () => {
         name="text"
         placeholder="This field is currently empty"
       />
-      <Moment fromNow interval={5000}>
-        {timeUpdated}
-      </Moment>
+      <Typography>
+        Last updated&nbsp;
+        <Moment fromNow interval={5000}>
+          {timeUpdated}
+        </Moment>
+      </Typography>
+
       <Typography variant="h3">
-        Last updated: {timeUpdated ? <Moment>{timeUpdated}</Moment> : "unknown"}
+        Updated at:&nbsp;
+        {timeUpdated ? <Moment>{timeUpdated}</Moment> : "unknown"}
       </Typography>
     </Paper>
   );

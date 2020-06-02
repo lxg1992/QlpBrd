@@ -22,7 +22,12 @@ const AlertContainer = () => {
       </Typography>
     </Paper>
   ) : (
-    ""
+    <Paper className={classes.alertContainer}>
+      <Typography color="secondary">
+        Use your browser window to navigate to different notes (
+        qlpbrd.herokuapp.com/enter/parameters/here )
+      </Typography>
+    </Paper>
   );
 };
 
