@@ -30,7 +30,7 @@ const Landing = () => {
       </Typography>
       <Divider />
       <Typography className={classes.textMargins} variant="body2">
-        qlpbrd.herokuapp.com/parameter1/parametertwo/paramIII
+        qlpbrd.herokuapp.com/ parameter1/parametertwo/paramIII
       </Typography>
       <Divider />
 
