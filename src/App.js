@@ -17,10 +17,10 @@ const App = () => {
         <Header />
         {/* </Grid> */}
 
-        <Grid item xs={12} sm={3}>
+        <Grid container item xs={12} sm={3}>
           <Navigation />
         </Grid>
-        <Grid container item xs={12} sm={9}>
+        <Grid container item xs={12} sm={9} direction="column">
           <AlertContainer />
           <Switch>
             <Route exact path="/">
@@ -31,10 +31,14 @@ const App = () => {
             </Route>
 
             <Route exact path="/:param1">
-              <h1>You must enter 3 parameters, you&apos;ve only entered one</h1>
+              <Typography variant="h1">
+                You must enter 3 parameters, you&apos;ve only entered one
+              </Typography>
             </Route>
             <Route exact path="/:param1/:param2">
-              <h1>You must enter 3 parameters, you&apos;ve only entered two</h1>
+              <Typography variant="h1">
+                You must enter 3 parameters, you&apos;ve only entered two
+              </Typography>
             </Route>
             <Route exact path="/:param1/:param2/:param3">
               <Note />

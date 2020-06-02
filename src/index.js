@@ -24,7 +24,7 @@ const Index = () => {
 
   return (
     <Provider store={store}>
-      <PersistGate loading={<div>Loading</div>} persistor={persistor}>
+      <PersistGate loading={<h1>Loading</h1>} persistor={persistor}>
         <ConnectedRouter history={history}>
           <ThemeProvider theme={theme}>
             <CssBaseLine />

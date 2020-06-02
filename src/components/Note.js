@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Moment from "react-moment";
 import { TextareaAutosize, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+
 import "../config";
 
 import delayAction from "../helpers/delay";
@@ -15,6 +17,18 @@ import {
   error_alert,
 } from "../redux/actions/alertActions";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    overflow: "hidden",
+    padding: theme.spacing(0, 3),
+  },
+
+  textArea: {
+    width: "100%",
+  },
+}));
+
 let prefix;
 
 if (process.env.NODE_ENV === "development") {
@@ -24,9 +38,15 @@ if (process.env.NODE_ENV === "development") {
 }
 
 const Note = () => {
-  const dispatch = useDispatch();
+  const classes = useStyles(0);
   const location = useLocation();
   const { param1, param2, param3 } = useParams();
+
+  if (param1.length > 20 || param2.length > 20 || param3.length > 20) {
+    return <div>Please limit your parameter length to 20 characters </div>;
+  }
+
+  const dispatch = useDispatch();
   const [note, setNote] = useState(" ");
   const [typingTimeout, setTypingTimeout] = useState(0);
   const [timeUpdated, setTimeUpdated] = useState(0);
@@ -63,9 +83,9 @@ const Note = () => {
       });
   };
 
-  const handleChange = (e) => {
+  const handleChange = ({ target: { value } }) => {
     setInitial(false);
-    setNote(e.target.value);
+    setNote(value);
   };
 
   const postNote = () => {
@@ -93,7 +113,7 @@ const Note = () => {
   };
 
   return (
-    <div>
+    <div className={classes.noteContainer}>
       <Typography variant="h3">{param1}</Typography>
       <hr />
       <Typography variant="h3">{param2}</Typography>
@@ -101,6 +121,7 @@ const Note = () => {
       <Typography variant="h3">{param3}</Typography>
       <hr />
       <TextareaAutosize
+        className={classes.textArea}
         rowsMin={5}
         value={note}
         onChange={handleChange}
