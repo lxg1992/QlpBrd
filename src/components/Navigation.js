@@ -50,7 +50,7 @@ const Navigation = () => {
 
       {links && links.length > 0 && (
         <Grid container item direction="column" justify="center">
-          {links.map((link, idx) => (
+          {links.map((link) => (
             <CustomLink link={link} key={link} />
           ))}
           <Button

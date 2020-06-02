@@ -17,10 +17,10 @@ const App = () => {
         <Header />
         {/* </Grid> */}
 
-        <Grid container item xs={12} sm={3}>
+        <Grid container item xs={12} sm={6} md={3}>
           <Navigation />
         </Grid>
-        <Grid container item xs={12} sm={9} direction="column">
+        <Grid container item xs={12} sm={6} md={9} direction="column">
           <AlertContainer />
           <Switch>
             <Route exact path="/">

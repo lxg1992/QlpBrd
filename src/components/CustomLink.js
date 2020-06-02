@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch, useStore } from "react-redux";
-import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 import {
@@ -17,22 +16,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import { removeLink } from "../redux/actions/linksActions";
 import { info_alert, remove_alert } from "../redux/actions/alertActions";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     margin: "5px 10px 5px",
   },
   leftButton: {
-    width: "20%",
+    width: "10%",
   },
   rightButton: {
-    width: "80%",
+    width: "90%",
   },
-  icon: {
-    "&:hover": {
-      backgroundColor: theme.palette.secondary,
-    },
-  },
-}));
+});
 
 const CustomLink = ({ link }) => {
   const classes = useStyles();
@@ -66,7 +60,7 @@ const CustomLink = ({ link }) => {
             history.push(link);
           }}
         >
-          <Typography>{link}</Typography>
+          <Typography noWrap>{link}</Typography>
         </Button>
       </ButtonGroup>
     </Box>

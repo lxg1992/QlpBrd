@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Moment from "react-moment";
-import { TextareaAutosize, Typography } from "@material-ui/core";
+import { TextareaAutosize, Typography, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -17,17 +17,16 @@ import {
   error_alert,
 } from "../redux/actions/alertActions";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    overflow: "hidden",
-    padding: theme.spacing(0, 3),
-  },
-
+const useStyles = makeStyles({
   textArea: {
     width: "100%",
   },
-}));
+  noteContainer: {
+    margin: "10px auto",
+    maxWidth: "95%",
+    padding: "10px",
+  },
+});
 
 let prefix;
 
@@ -113,12 +112,12 @@ const Note = () => {
   };
 
   return (
-    <div className={classes.noteContainer}>
-      <Typography variant="h3">{param1}</Typography>
+    <Paper className={classes.noteContainer}>
+      <Typography variant="h5">{param1}</Typography>
       <hr />
-      <Typography variant="h3">{param2}</Typography>
+      <Typography variant="h5">{param2}</Typography>
       <hr />
-      <Typography variant="h3">{param3}</Typography>
+      <Typography variant="h5">{param3}</Typography>
       <hr />
       <TextareaAutosize
         className={classes.textArea}
@@ -134,7 +133,7 @@ const Note = () => {
       <Typography variant="h3">
         Last updated: {timeUpdated ? <Moment>{timeUpdated}</Moment> : "unknown"}
       </Typography>
-    </div>
+    </Paper>
   );
 };
 export default Note;
